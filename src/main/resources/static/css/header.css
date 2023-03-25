@@ -1,123 +1,123 @@
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: skyblue;
-    width: 200px;
-    height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: skyblue;
+  width: 200px;
+  height: 100vh;
 }
 
 header .btn-list {
-    display: inline-block;
-    border-radius: 8px;
-    width: 40px;
-    height: 40px;
-    margin: 16px 10px 0;
-    font-size: 20px;
-    text-align: center;
-    line-height: 40px;
-    transition: all 0.5s;
-    color: white;
+  display: inline-block;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  margin: 16px 10px 0;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  transition: all 0.5s;
+  color: white;
 }
 
 header .btn-list:hover {
-    cursor: pointer;
-    background-color: #51bbe7;
+  cursor: pointer;
+  background-color: #51bbe7;
 }
 
 header .logo {
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 header nav {
-    width: inherit;
+  width: inherit;
 }
 
 header nav ul {
-    width: 184px;
-    margin: 0 auto;
+  width: 184px;
+  margin: 0 auto;
 }
 
 header nav ul .menu-list {
-    height: 40px;
-    font-size: 16px;
-    line-height: 40px;
-    padding-left: 10px;
-    transition: all 0.5s;
-    color: white;
+  height: 40px;
+  font-size: 16px;
+  line-height: 40px;
+  padding-left: 10px;
+  transition: all 0.5s;
+  color: white;
 }
 
 header nav ul .menu-list:hover {
-    background-color: #51bbe7;
-    border-radius: 8px;
+  background-color: #51bbe7;
+  border-radius: 8px;
 }
 
 .menu-list a {
-    display: block;
-    height: inherit;
+  display: block;
+  height: inherit;
 }
 
 .menu-list .icon {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .dashboard_header {
-    width: 100vw;
-    border-bottom: 1px solid rgb(156, 163, 175);
+  width: 100vw;
+  border-bottom: 1px solid rgb(156, 163, 175);
 }
 
 .dashboard_header section {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .dashboard_header .commute-menu {
-    padding-left: 220px;
+  padding-left: 220px;
 }
 
 .dashboard_header section .commute-menu button {
-    width: 100px;
-    height: 35px;
-    margin-top: 7px;
-    margin-right: 10px;
-    border-radius: 8px;
-    background-color: skyblue;
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
+  width: 100px;
+  height: 35px;
+  margin-top: 7px;
+  margin-right: 10px;
+  border-radius: 8px;
+  background-color: skyblue;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .dashboard_header section .commute-menu button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .dashboard_header section .commute-menu button:last-child {
-    background-color: coral;
+  background-color: coral;
 }
 
 .dashboard_header .my-info-menu {
-    display: flex;
-    width: 250px;
+  display: flex;
+  width: 250px;
 }
 
 .dashboard_header .my-info-menu p {
-    margin-right: 10px;
-    line-height: 50px;
-    font-weight: bold;
+  margin-right: 10px;
+  line-height: 50px;
+  font-weight: bold;
 }
 
 .dashboard_header .my-info-menu div {
-    width: 30px;
-    height: 30px;
-    margin: 10px;
-    font-size: 20px;
-    text-align: center;
-    line-height: 30px;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 30px;
 }
 
 .dashboard_header .my-info-menu div:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
