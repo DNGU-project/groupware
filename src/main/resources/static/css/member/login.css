@@ -69,8 +69,13 @@ body {
 .card-content .field.spaced a:first-child {
   margin-right: 10px;
 }
-.card-content .field.spaced a:before {
-
+.card-content .field.spaced a:hover {
+  font-weight: bold;
+}
+.card-content .field.spaced a:first-child::after {
+  content: '';
+  border-right: 1px solid rgb(156, 163, 175);
+  margin-left: 15px;
 }
 .card-content .field.grouped {
   display: flex;
