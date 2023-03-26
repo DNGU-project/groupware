@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>DNGU - Login</title>
+  <link rel="stylesheet" th:href="@{/css/reset.css}">
+  <link rel="stylesheet" th:href="@{/css/member/login.css}">
+  <script src="https://kit.fontawesome.com/2832571431.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section class="card-section">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+        Login
+      </p>
+    </header>
+    <div class="card-content">
+      <form action="">
+        <div class="field spaced">
+          <label class="label">ID</label>
+          <div class="control icons-left">
+            <input type="text" class="input" name="id" placeholder="ID를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-user"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Password</label>
+          <div class="control icons-left">
+            <input type="text" class="input" name="id" placeholder="Password를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-key"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <a href="#">아이디 찾기</a>
+          <a href="#">비밀번호 찾기</a>
+        </div>
+        <div class="field grouped">
+          <div class="control">
+            <button type="submit" class="button blue">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</body>
+</html>
