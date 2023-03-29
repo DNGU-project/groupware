@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/fragments/head :: head}"></th:block>
+<link rel="stylesheet" th:href="@{/css/account/register.css}">
+</head>
+<body>
+
+<th:block th:replace="~{/fragments/header :: header}"></th:block>
+
+<section class="card-section">
+  <div class="card">
+    <div class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+        Register
+      </p>
+    </div>
+    <div class="card-content">
+      <form action="/account/registerPost" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <div class="field spaced">
+          <label class="label">ID</label>
+          <div class="control icons-left">
+            <input type="text" class="input" name="empId" placeholder="ID를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-user"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Password</label>
+          <div class="control icons-left">
+            <input type="password" class="input" name="password" placeholder="Password를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-key"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Name</label>
+          <div class="control icons-left">
+            <input type="text" class="input" name="name" placeholder="이름을 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-key"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Email</label>
+          <div class="control icons-left">
+            <input type="email" class="input" name="email" placeholder="Email을 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Phone</label>
+          <div class="control icons-left">
+            <input type="text" class="input" name="phone" placeholder="번호를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-phone"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Postcode</label>
+          <div class="control icons-left">
+            <input type="text" id="postcode" class="input" name="postcode" placeholder="우편번호" readonly autocomplete="off">
+            <input type="button" class="postcode-btn" onclick="findAddress()" value="우편번호 찾기">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-map-location-dot"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Address</label>
+          <div class="control icons-left">
+            <input type="text" id="address" class="input" name="address" placeholder="주소" readonly autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-address-card"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field spaced">
+          <label class="label">Detail Address</label>
+          <div class="control icons-left">
+            <input type="text" id="detailAddress" class="input" name="detailAddress" placeholder="상세주소를 입력해주세요." autocomplete="off">
+            <span class="icon is-small left">
+              <i class="fa-solid fa-address-card"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field grouped">
+          <div class="field select">
+            <label for="dept" class="label">부서</label>
+            <select name="deptNo" id="dept">
+              <option value="10">인사팀</option>
+              <option value="20">영업팀</option>
+              <option value="30">개발팀</option>
+            </select>
+          </div>
+          <div class="field select">
+            <label for="job" class="label">직급</label>
+            <select name="jobNo" id="job">
+              <option value="2">부장</option>
+              <option value="3">대리</option>
+              <option value="4">사원</option>
+            </select>
+          </div>
+        </div>
+        <div class="field grouped">
+          <div class="control">
+            <button type="submit" class="button blue">사원등록</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script defer th:src="@{/js/account/register.js}"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</body>
+</html>

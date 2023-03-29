@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="header">
+<div th:fragment="header">
   <header>
     <!--  <span class="btn-list"><i class="fa-solid fa-bars"></i></span>-->
     <h1 class="logo">
@@ -81,7 +81,7 @@
         <!--      <button>퇴근</button>-->
       </div>
       <div class="my-info-menu">
-        <p>민재홍 / 사원</p>
+        <p><span>민재홍</span> / 사원</p>
         <div class="profile" title="내 정보">
           <i class="fa-regular fa-user"></i>
         </div>
@@ -91,6 +91,6 @@
       </div>
     </section>
   </div>
-</th:block>
+</div>
 
 </html>
