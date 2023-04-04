@@ -1,20 +1,58 @@
 package com.team.groupware.config;
 
+import com.team.groupware.service.AccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // spring security 필터가 spring 필터체인에 등록됨
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  @Autowired
+  AccountService accountService;
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
+    // http 요청에 대한 보안 설정
+    http.authorizeRequests()
+            .antMatchers("/account/login").authenticated() // 인증되지 않은 유저만 허용
+//            .antMatchers("/**").hasAuthority("E")
+            .and()
+            // 로그인 설정
+            .formLogin()
+            .loginPage("/account/login") // 로그인 인증 경로 등록
+            .loginProcessingUrl("/account/loginPost")
+            .usernameParameter("empId") // username대신 받을 아이디 파라미터
+            .passwordParameter("password") // password 파라미터
+            .defaultSuccessUrl("/") // 로그인 인증을 성공하면 이동할 페이지 등록
+            .permitAll()
+            .and()
+            // 로그아웃 설정
+            .logout()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/account/logout")) // 로그아웃 경로 설정
+            .logoutSuccessUrl("/account/login") // 로그아웃 설공 시 이동할 경로 지정
+            .invalidateHttpSession(true)
+            .and()
+            .exceptionHandling();
+  }
 
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+    web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+  }
+
+  @Override
+  public void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(accountService).passwordEncoder(passwordencoder());
   }
 
   @Bean
