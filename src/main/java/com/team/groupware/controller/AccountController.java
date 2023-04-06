@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AccountController {
   private final EmployDAO employDAO;
 
+  // 생성자 주입
   private final AccountService accountService;
 
   private final PasswordEncoder passwordEncoder; // 패스워드 암호화
@@ -32,7 +33,8 @@ public class AccountController {
 
   @PostMapping("/loginPost")
   public void loginPost(LoginDTO dto) throws Exception {
-
+    System.out.println("loginPost controller......");
+    System.out.println(dto);
   }
 
   @GetMapping("/login/error")

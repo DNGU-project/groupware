@@ -77,16 +77,16 @@
   <div class="dashboard_header">
     <section>
       <div class="commute-menu">
-        <!--      <button>출근</button>-->
-        <!--      <button>퇴근</button>-->
       </div>
       <div class="my-info-menu">
-        <p><span>민재홍</span> / 사원</p>
+        <p><span th:text="${member.name}"></span> / 사원</p>
         <div class="profile" title="내 정보">
           <i class="fa-regular fa-user"></i>
         </div>
         <div class="logout" title="로그아웃">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <a href="/account/logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
         </div>
       </div>
     </section>

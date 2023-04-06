@@ -40,8 +40,10 @@ public class Employ {
   private Timestamp hireDate;
   @Temporal(TemporalType.DATE)
   private Date leaveDate;
-  @Column(nullable = false, length = 1, columnDefinition = "CHAR(1) DEFAULT 'N'")
+  @Column(length = 1, columnDefinition = "CHAR(1) DEFAULT 'N'")
   private String isLeave;
+  @Column(nullable = false)
+  private String role;
   @ManyToOne
   @JoinColumn(name = "job_no", nullable = false)
   private Job jobNo;
@@ -62,6 +64,7 @@ public class Employ {
     employ.setAddress(createEmployDTO.getAddress());
     employ.setDetailAddress(createEmployDTO.getDetailAddress());
     employ.setIsLeave("N");
+    employ.setRole("ROLE_MEMBER");
     employ.setDeptNo(Department.builder().deptNo(createEmployDTO.getDeptNo()).build());
     employ.setJobNo(Job.builder().jobNo(createEmployDTO.getJobNo()).build());
     return employ;

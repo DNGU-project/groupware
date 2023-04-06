@@ -17,7 +17,7 @@
       </p>
     </header>
     <div class="card-content">
-      <form action="/account/loginPost" method="post">
+      <form action="/account/loginPost" method="POST">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <div class="field spaced">
           <label class="label">ID</label>
