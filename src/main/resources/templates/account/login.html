@@ -17,12 +17,12 @@
       </p>
     </header>
     <div class="card-content">
-      <form action="/member/loginPost" method="post">
+      <form action="/account/loginPost" method="POST">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         <div class="field spaced">
           <label class="label">ID</label>
           <div class="control icons-left">
-            <input type="text" class="input" name="emp_no" placeholder="ID를 입력해주세요." autocomplete="off">
+            <input type="text" class="input" name="empId" placeholder="ID를 입력해주세요." autocomplete="off">
             <span class="icon is-small left">
               <i class="fa-solid fa-user"></i>
             </span>
@@ -36,6 +36,7 @@
               <i class="fa-solid fa-key"></i>
             </span>
           </div>
+          <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
         </div>
         <div class="field spaced">
           <a href="#">아이디 찾기</a>
