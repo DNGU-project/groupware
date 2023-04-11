@@ -1,13 +1,10 @@
 package com.team.groupware.config;
 
 import com.team.groupware.service.AccountService;
-import lombok.extern.java.Log;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -20,9 +17,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 @Configuration
 @EnableWebSecurity // spring security 필터가 spring 필터체인에 등록됨
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Autowired
   private AccountService accountService;
 
   @Override
@@ -67,10 +64,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   public PasswordEncoder passwordencoder() {
     return new BCryptPasswordEncoder();
   }
-
-//  @Bean
-//  @Override
-//  public AuthenticationManager authenticationManager() throws Exception {
-//    return super.authenticationManagerBean();
-//  }
+  
 }

@@ -44,10 +44,10 @@ public class Employ {
   private String isLeave;
   @Column(nullable = false)
   private String role;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "job_no", nullable = false)
   private Job jobNo;
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "dept_no", nullable = false)
   private Department deptNo;
 

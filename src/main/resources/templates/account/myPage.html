@@ -80,10 +80,11 @@
             </span>
           </div>
         </div>
-        <div class="field grouped">
-          <div class="control">
-            <button class="button blue">정보 수정</button>
-          </div>
+
+      </div>
+      <div class="field grouped">
+        <div class="control">
+          <button id="submit-button" class="button blue">정보 수정</button>
         </div>
       </div>
     </form>
@@ -91,81 +92,45 @@
   </div>
 </section>
 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-  // function memberUpdate() {
-  //   const data = {
-  //     empId: document.getElementById('empId').value,
-  //     name: document.getElementById('name').value,
-  //     phone: document.getElementById('phone').value,
-  //     postcode: document.getElementById('postcode').value,
-  //     address: document.getElementById('address').value,
-  //     detailAddress: document.getElementById('detailAddress').value
-  //   };
-  //
-  //   if ((!data.name || data.name.trim() === "") || (!data.postcode || data.postcode.trim() === "") || (!data.address || data.address.trim() === "") || (!data.detailAddress || data.detailAddress.trim() === "")) {
-  //     alert('공백 또는 입력하지 않은 부분이 있습니다.');
-  //     return false;
-  //   }
-  //
-  //   const confirmCheck = confirm('수정하시겠습니까?');
-  //
-  //   if (confirmCheck) {
-  //     $.ajax({
-  //       method: 'PUT',
-  //       url: '/account/myPagePut',
-  //       contentType: 'application/json; charset=utf-8',
-  //       data: JSON.stringify(data)
-  //     }).done(function (result) {
-  //       if (result) {
-  //         alert('회원정보 수정이 완료되었습니다.');
-  //         window.location.href = '/';
-  //       } else {
-  //         alert('회원정보 수정 실패');
-  //         window.location.reload();
-  //       }
-  //     }).fail(function (error) {
-  //       alert(JSON.stringify(error));
-  //     });
-  //   }
-  // }
+  const submitBtn = document.getElementById('submit-button');
+  const header = $("meta[name='_csrf_header']").attr("content");
+  const token = $("meta[name='_csrf']").attr("content");
 
-  // function memberUpdate() {
-  //   const data = {
-  //     empId: document.getElementById('empId').value,
-  //     name: document.getElementById('name').value,
-  //     phone: document.getElementById('phone').value,
-  //     postcode: document.getElementById('postcode').value,
-  //     address: document.getElementById('address').value,
-  //     detailAddress: document.getElementById('detailAddress').value
-  //   };
-  //
-  //   if ((!data.name || data.name.trim() === "") || (!data.postcode || data.postcode.trim() === "") || (!data.address || data.address.trim() === "") || (!data.detailAddress || data.detailAddress.trim() === "")) {
-  //     alert('공백 또는 입력하지 않은 부분이 있습니다.');
-  //     return false;
-  //   }
-  //
-  //   const confirmCheck = confirm('수정하시겠습니까?');
-  //
-  //   if (confirmCheck) {
-  //     fetch('http://localhost:8080/account/myPagePut', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: data
-  //     }).then((response) => {
-  //       alert('회원정보 수정이 완료되었습니다.');
-  //       console.log(response.json());
-  //     }).then((data) => {
-  //       alert(data);
-  //     }).catch((error) => {
-  //       alert(JSON.stringify(error));
-  //     })
-  //   }
-  // }
-
-
-
+  submitBtn.addEventListener('click', function () {
+    const confirmCheck = confirm('수정하시겠습니까?');
+    if (confirmCheck) {
+      const data = {
+        empId: document.getElementById('empId').value,
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        postcode: document.getElementById('postcode').value,
+        address: document.getElementById('address').value,
+        detailAddress: document.getElementById('detailAddress').value
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/account/myPagePut',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        success: function (data) {
+          alert('회원정보 수정이 완료되었습니다.');
+          window.location.href = '/';
+        },
+        error: function (error) {
+          alert(error);
+        },
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader(header, token);
+        },
+      });
+    } else {
+      return false;
+    }
+  });
 
   function findAddress() {
     new daum.Postcode({
@@ -201,45 +166,6 @@
       }
     }).open();
   }
-</script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-  const form = document.getElementById('form');
-  const header = $("meta[name='_csrf_header']").attr("content");
-  const token = $("meta[name='_csrf']").attr("content");
-
-  form.addEventListener('submit', function () {
-    const data = {
-      empId: document.getElementById('empId').value,
-      name: document.getElementById('name').value,
-      phone: document.getElementById('phone').value,
-      postcode: document.getElementById('postcode').value,
-      address: document.getElementById('address').value,
-      detailAddress: document.getElementById('detailAddress').value
-    };
-    $.ajax({
-      method: 'POST',
-      url: '/account/myPagePut',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: JSON.stringify(data),
-      cache: false,
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader(header, token);
-      }
-    }).done(function (result) {
-      if (result) {
-        alert('회원정보 수정이 완료되었습니다.');
-        window.location.href = '/';
-      } else {
-        alert('회원정보 수정 실패');
-        window.location.reload();
-      }
-    }).fail(function (error) {
-      alert(JSON.stringify(error));
-    });
-  });
 </script>
 </body>
 </html>
