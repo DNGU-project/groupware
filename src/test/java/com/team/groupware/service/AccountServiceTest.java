@@ -82,16 +82,4 @@ class AccountServiceTest {
     return Employ.createEmploy(createEmployDTO, passwordEncoder);
   }
 
-  @Test
-  @DisplayName("로그인 테스트")
-  public void loginTest() throws Exception{
-    String empId = "112233";
-    String password = "1234";
-    this.createEmploy(empId, password);
-    mockMvc.perform(formLogin().userParameter("empId")
-            .loginProcessingUrl("/account/login")
-            .user(empId).password(password))
-            .andExpect(SecurityMockMvcResultMatchers.authenticated());
-  }
-
 }

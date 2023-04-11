@@ -70,5 +70,14 @@ public class Employ {
     return employ;
   }
 
+  public void update(String empId, String name, String phone, String postcode, String address, String detailAddress) {
+    this.empId = empId;
+    this.name = name;
+    this.phone = phone;
+    this.postcode = postcode;
+    this.address = address;
+    this.detailAddress = detailAddress;
+  }
+
 }
 

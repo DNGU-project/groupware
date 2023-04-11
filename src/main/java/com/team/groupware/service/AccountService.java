@@ -1,15 +1,14 @@
 package com.team.groupware.service;
 
+import com.team.groupware.dto.MyPageDTO;
 import com.team.groupware.entity.Employ;
 import com.team.groupware.repository.EmployRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -31,4 +30,9 @@ public class AccountService {
     }
   }
 
+  public void employInfoUpdate(MyPageDTO dto) {
+    Employ employ = employRepository.findByEmpId(dto.getEmpId());
+    employ.update(dto.getEmpId(), dto.getName(), dto.getPhone(), dto.getPostcode(), dto.getAddress(), dto.getDetailAddress());
+    log.info("회원정보 수정 완료");
+  }
 }

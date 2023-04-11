@@ -5,7 +5,7 @@
   <header>
     <!--  <span class="btn-list"><i class="fa-solid fa-bars"></i></span>-->
     <h1 class="logo">
-      <a href="#">
+      <a href="/">
         <img th:src="@{/img/logo.png}" alt="logo" width="160" height="80">
       </a>
     </h1>
@@ -79,9 +79,15 @@
       <div class="commute-menu">
       </div>
       <div class="my-info-menu">
-        <p><span th:text="${member.name}"></span> / 사원</p>
+        <p>
+          <span th:text="${member.name}"></span>
+          /
+          <span th:text="${member.jobNo.getJobName()}"></span>
+        </p>
         <div class="profile" title="내 정보">
-          <i class="fa-regular fa-user"></i>
+          <a href="/account/checkPwd">
+            <i class="fa-regular fa-user"></i>
+          </a>
         </div>
         <div class="logout" title="로그아웃">
           <a href="/account/logout">

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/fragments/head :: head}"></th:block>
+<link rel="stylesheet" th:href="@{/css/account/checkPwd.css}">
+</head>
+<body>
+
+<th:block th:replace="~{/fragments/header :: header}"></th:block>
+
+<section class="card-section">
+  <div class="card">
+    <div class="card-header">
+      <p class="card-header-title">
+        <span class="icon"><i class="fa-solid fa-lock"></i></span>
+        비밀번호 확인
+      </p>
+    </div>
+    <div class="card-content">
+      <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>
+      <div class="field spaced">
+        <label class="label">Password</label>
+        <div class="control icons-left">
+          <input type="password" id="password" class="input" name="password" placeholder="Password를 입력해주세요."
+                 autocomplete="off">
+          <span class="icon is-small left">
+              <i class="fa-solid fa-key"></i>
+            </span>
+        </div>
+        <div class="field grouped">
+          <div class="control">
+            <button id="checkPwd" class="button blue">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const checkPwd = document.getElementById('checkPwd');
+
+  checkPwd.addEventListener('click', function () {
+    const password = document.getElementById('password').value;
+    $.ajax({
+      type: 'GET',
+      url: '/account/checkPassword',
+      data: {'password': password},
+      datatype: 'text'
+    }).done(function (result) {
+      console.log(result);
+      if (result) {
+        console.log('비밀번호 일치');
+        window.location.href = '/account/myPage';
+      } else if (!result) {
+        console.log('비밀번호 틀림');
+        alert('비밀번호가 맞지 않습니다.');
+        window.location.reload();
+      }
+    }).fail(function (error) {
+      alert(JSON.stringify(error));
+    });
+  })
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</body>
+</html>

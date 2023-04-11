@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Slf4j
@@ -27,11 +29,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     log.info("security config......");
     http
-//            .csrf().disable()
+            .headers()
+            .and()
+            .csrf()
+            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .and()
             // http 요청에 대한 보안 설정
             .authorizeRequests()
             .antMatchers("/account/login").authenticated() // 인증되지 않은 유저만 허용
-            .anyRequest().access("hasRole('ROLE_MEMBER') or hasRole('ROLE_ADMIN')")
+//            .anyRequest().access("hasRole('ROLE_MEMBER') or hasRole('ROLE_ADMIN')")
+            .anyRequest().access("hasRole('ROLE_MEMBER')")
             .and()
             // 로그인 설정
             .formLogin()
@@ -55,14 +62,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
   }
 
-//  @Override
-//  public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//    auth.userDetailsService(accountService).passwordEncoder(passwordencoder());
-//  }
-
   // 해당 메서드의 리턴되는 오브젝트를 IoC로 등록
   @Bean
   public PasswordEncoder passwordencoder() {
     return new BCryptPasswordEncoder();
   }
+
+//  @Bean
+//  @Override
+//  public AuthenticationManager authenticationManager() throws Exception {
+//    return super.authenticationManagerBean();
+//  }
 }

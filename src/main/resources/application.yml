@@ -17,7 +17,15 @@ spring:
   thymeleaf:
     cache: false
 
-#  Jpa 설정
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
+  #  main:
+#    allow-circular-references: true
+
+  #  Jpa 설정
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
