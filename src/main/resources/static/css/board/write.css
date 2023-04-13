@@ -1,0 +1,118 @@
+.board-container {
+  display: flex;
+  min-width: 1540px;
+  padding-left: 200px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  flex-grow: 0;
+  border-right: 1px solid rgb(156, 163, 175);
+  width: 200px;
+  box-sizing: border-box;
+}
+
+.dashboard nav ul {
+  width: 180px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.dashboard nav ul li {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+article {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 1140px;
+  box-sizing: border-box;
+  margin: 40px 0;
+}
+
+article .write-container {
+  width: 1000px;
+}
+
+article .write-container h2 {
+  height: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 60px;
+}
+
+article .write-container .write-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+article .write-container .write-wrap .group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+article .write-container .write-wrap .group:not(:last-of-type) label,
+article .write-container .write-wrap .group span {
+  display: inline-block;
+  width: 100px;
+  margin-right: 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+article .write-container .write-wrap .group:nth-child(3) label {
+  width: 120px;
+}
+
+article .write-container .write-wrap .group:nth-child(3) input {
+  margin-left: 10px;
+}
+
+article .write-container .write-wrap .group .input {
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #585B5B;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+article .write-container .write-wrap textarea {
+  width: 1000px;
+  height: 400px;
+  padding: 10px;
+  border: 1px solid #585B5B;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+article .write-container .write-wrap .group:nth-child(2) .input {
+  border: 0;
+}
+
+article .write-container .write-wrap .group:last-child {
+  justify-content: center;
+  gap: 20px;
+}
+
+article .write-container .write-wrap .group a {
+  width: 150px;
+  height: 50px;
+  background: skyblue;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 8px;
+}

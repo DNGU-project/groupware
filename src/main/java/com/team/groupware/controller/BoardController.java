@@ -32,4 +32,18 @@ public class BoardController {
     model.addAttribute("member", employ);
     return "board/notice";
   }
+
+  @GetMapping("/read")
+  public String readBoard(Model model, Principal principal) {
+    Employ employ = employRepository.findByEmpId(principal.getName());
+    model.addAttribute("member", employ);
+    return "board/read";
+  }
+
+  @GetMapping("/write")
+  public String writeBoard(Model model, Principal principal) {
+    Employ employ = employRepository.findByEmpId(principal.getName());
+    model.addAttribute("member", employ);
+    return "board/write";
+  }
 }

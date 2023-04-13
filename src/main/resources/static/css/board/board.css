@@ -42,6 +42,7 @@ article .board-content .board-wrap {
 article .board-content .board-wrap .board-list-wrap table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .board-list-wrap table tr {
@@ -54,6 +55,11 @@ article .board-content .board-wrap .board-list-wrap table {
   border-bottom: 2px solid #000;
 }
 
+.board-list-wrap table tbody tr:hover {
+  background: rgb(211, 217, 229);
+  cursor: pointer;
+}
+
 .board-list-wrap table tbody td {
   font-size: 1rem;
   text-align: center;
@@ -63,10 +69,9 @@ article .board-content .board-wrap .board-list-wrap table {
 .board-list-wrap table tbody td:nth-child(2) {
   text-align: left;
   padding: 0 10px;
-}
-
-.board-list-wrap table tbody tr:hover {
-  background: rgb(211, 217, 229);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .board-wrap .tool-bar-wrap {
