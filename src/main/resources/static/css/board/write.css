@@ -105,7 +105,8 @@ article .write-container .write-wrap .group:last-child {
   gap: 20px;
 }
 
-article .write-container .write-wrap .group a {
+article .write-container .write-wrap .group a,
+article .write-container .write-wrap .group button {
   width: 150px;
   height: 50px;
   background: skyblue;

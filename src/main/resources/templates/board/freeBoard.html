@@ -49,45 +49,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>1</td>
-              <td><a href="/board/read">좋은 카페 알려주실분!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</a></td>
-              <td>민재홍</td>
-              <td>2023-04-12</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>좋은 카페 알려주실분!!</td>
-              <td>민재홍</td>
-              <td>2023-04-12</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>좋은 카페 알려주실분!!</td>
-              <td>민재홍</td>
-              <td>2023-04-12</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>좋은 카페 알려주실분!!</td>
-              <td>민재홍</td>
-              <td>2023-04-12</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>좋은 카페 알려주실분!!</td>
-              <td>민재홍</td>
-              <td>2023-04-12</td>
-              <td>0</td>
-              <td>0</td>
+            <tr th:each="board, boardStat : ${freeBoard}">
+              <td th:text="${board.bno}"></td>
+              <td><a th:href="@{/board/read(bno = ${board.bno})}" th:text="${board.title}"></a></td>
+              <td th:text="${board.name}"></td>
+              <td th:text="${#dates.format(board.writeDate, 'yyyy-MM-dd')}"></td>
+              <td th:text="${board.views}"></td>
+              <td th:text="${board.grate}"></td>
             </tr>
             </tbody>
           </table>

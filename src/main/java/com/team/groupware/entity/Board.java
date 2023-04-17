@@ -1,6 +1,7 @@
 package com.team.groupware.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
@@ -12,6 +13,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "Board")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Board {
@@ -26,13 +28,14 @@ public class Board {
   @Column(nullable = false)
   private String content;
   @CreationTimestamp
-  @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT now()")
+  @Column(columnDefinition = "TIMESTAMP DEFAULT now()")
   private Timestamp writeDate;
-  @Column(nullable = false)
   @ColumnDefault("0")
-  private Integer views;
-  @Column(nullable = false, columnDefinition = "CHAR(1) DEFAULT 'F'")
+  private int views;
+  @Column(columnDefinition = "CHAR(1) DEFAULT 'F'")
   private String type;
+  @ColumnDefault("0")
+  private int grate;
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "emp_id", nullable = false)
   private Employ empId;
