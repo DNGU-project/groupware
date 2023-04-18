@@ -48,7 +48,7 @@ public class AccountController {
     log.info("createEmployDTO={}", createEmployDTO);
     Employ employ = Employ.createEmploy(createEmployDTO, passwordEncoder);
     accountService.saveEmploy(employ);
-    return "redirect:/account/login";
+    return "redirect:/";
   }
 
   @GetMapping("/checkPwd")

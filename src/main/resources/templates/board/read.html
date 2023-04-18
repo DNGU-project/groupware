@@ -26,7 +26,8 @@
   <!--  글 상세보기  -->
   <article>
     <div class="read-wrap">
-      <h2>좋은 카페 추천해주세요!</h2>
+      <h2 th:text="${board.title}"></h2>
+      <a th:if="${member.empId == board.empId.empId}" th:href="@{/board/modify(bno = ${board.bno})}" class="modify-btn">글 수정</a>
       <table>
         <colgroup>
           <col width="10%">
@@ -41,14 +42,13 @@
         <thead>
         <tr>
           <th>작성자</th>
-          <td>민재홍</td>
+          <td th:text="${board.name}"></td>
           <th>작성일</th>
-          <td>2023-04-12</td>
+          <td th:text="${board.writeDate}"></td>
           <th>조회수</th>
-          <td>0</td>
+          <td th:text="${board.views}"></td>
           <th>좋아요</th>
-          <td>
-            0
+          <td th:text="${board.grate}">
             <a href="#"><i class="fa-regular fa-heart"></i></a>
 <!--            <a href="#"><i class="fa-solid fa-heart"></i></a>-->
           </td>
@@ -57,80 +57,7 @@
         <tbody>
         <tr>
           <td colspan="8">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores
-              omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi exercitationem fugiat
-              magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe velit! Aspernatur,
-              quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi cum dolor excepturi
-              exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat repudiandae saepe
-              velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet commodi
-              cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui, quibusdam quod repellat
-              repudiandae saepe velit! Aspernatur, quis?Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Accusamus amet commodi cum dolor excepturi exercitationem fugiat magnam magni maiores omnis quam qui,
-              quibusdam quod repellat repudiandae saepe velit! Aspernatur, quis?
-            </div>
+            <div th:text="${board.content}"></div>
           </td>
         </tr>
         </tbody>

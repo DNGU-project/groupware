@@ -1,5 +1,6 @@
 package com.team.groupware.controller;
 
+import com.team.groupware.dto.ModifyBoard;
 import com.team.groupware.dto.WriteBoardDTO;
 import com.team.groupware.entity.Board;
 import com.team.groupware.entity.BoardGrate;
@@ -69,5 +70,24 @@ public class BoardController {
     log.info("BoardController writePost.....");
     boardService.saveBoard(dto.toEntity());
     return true;
+  }
+
+  @GetMapping("/modify")
+  public String modifyBoard(Model model, Principal principal, @RequestParam Long bno) {
+    Employ employ = employRepository.findByEmpId(principal.getName());
+    Board board = boardService.getBoardDetail(bno);
+
+    model.addAttribute("member", employ);
+    model.addAttribute("board", board);
+    return "board/modify";
+  }
+
+  @PostMapping("/modifyPost")
+  @ResponseBody
+  public Long modifyBoardPost(@RequestBody ModifyBoard dto) {
+    log.info("BoardController modifyPost.....");
+    log.info("dto: " + dto);
+    boardService.boardUpdate(dto);
+    return dto.getBno();
   }
 }

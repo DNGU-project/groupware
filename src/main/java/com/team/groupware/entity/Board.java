@@ -40,4 +40,12 @@ public class Board {
   @JoinColumn(name = "emp_id", nullable = false)
   private Employ empId;
 
+  public void update(String title, String name, String content, String type, String empId) {
+    this.title = title;
+    this.name = name;
+    this.content = content;
+    this.type = type;
+    this.empId = Employ.builder().empId(empId).build();
+  }
+
 }

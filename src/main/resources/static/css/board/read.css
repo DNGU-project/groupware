@@ -34,6 +34,7 @@ article {
 article .read-wrap {
   width: 1000px;
   padding: 40px 0;
+  position: relative;
 }
 
 article h2 {
@@ -42,6 +43,24 @@ article h2 {
   font-size: 2rem;
   text-align: center;
   line-height: 60px;
+}
+
+article .modify-btn {
+  display: flex;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  background: skyblue;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 8px;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 45px;
 }
 
 article table {
@@ -126,7 +145,7 @@ article .reply-wrap form:not(:first-of-type) div {
 article .reply-wrap .reply {
   width: 100%;
   height: 30px;
-  padding: 5px 10px ;
+  padding: 5px 10px;
   border-radius: 4px;
   box-sizing: border-box;
 }

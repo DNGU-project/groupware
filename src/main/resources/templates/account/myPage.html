@@ -96,10 +96,9 @@
   const submitBtn = document.getElementById('submit-button');
   const header = $("meta[name='_csrf_header']").attr("content");
   const token = $("meta[name='_csrf']").attr("content");
-  console.log(submitBtn);
 
   submitBtn.addEventListener('click', function (event) {
-    evnet.preventDefault();
+    event.preventDefault();
     const confirmCheck = confirm('수정하시겠습니까?');
     if (confirmCheck) {
       const data = {
