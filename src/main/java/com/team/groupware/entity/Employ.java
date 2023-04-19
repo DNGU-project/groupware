@@ -9,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -50,6 +52,8 @@ public class Employ {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "dept_no", nullable = false)
   private Department deptNo;
+  @OneToMany(mappedBy = "empId")
+  private List<Reservation> reservations = new ArrayList<>();
 
   // 사원등록 페이지에서 데이터를 받아 employ에 저장
   public static Employ createEmploy(CreateEmployDTO createEmployDTO, PasswordEncoder passwordEncoder) {
