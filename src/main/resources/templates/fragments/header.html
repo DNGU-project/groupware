@@ -12,7 +12,7 @@
     <nav>
       <ul>
         <li class="menu-list">
-          <a href="#">
+          <a href="/">
             <span class="icon"><i class="fa-solid fa-house"></i></span>
             홈
           </a>
@@ -36,7 +36,7 @@
           </a>
         </li>
         <li class="menu-list">
-          <a href="#">
+          <a href="/board/freeBoard">
             <span class="icon"><i class="fa-brands fa-instagram"></i></span>
             커뮤니티
           </a>
@@ -81,8 +81,11 @@
       <div class="my-info-menu">
         <p>
           <span th:text="${member.name}"></span>
+          (
+          <span th:text="${member.deptNo.getDeptName()}"></span>
           /
           <span th:text="${member.jobNo.getJobName()}"></span>
+          )
         </p>
         <div class="profile" title="내 정보">
           <a href="/account/checkPwd">

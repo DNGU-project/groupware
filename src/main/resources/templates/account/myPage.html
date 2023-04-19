@@ -80,7 +80,6 @@
             </span>
           </div>
         </div>
-
       </div>
       <div class="field grouped">
         <div class="control">
@@ -88,7 +87,6 @@
         </div>
       </div>
     </form>
-
   </div>
 </section>
 
@@ -99,7 +97,8 @@
   const header = $("meta[name='_csrf_header']").attr("content");
   const token = $("meta[name='_csrf']").attr("content");
 
-  submitBtn.addEventListener('click', function () {
+  submitBtn.addEventListener('click', function (event) {
+    event.preventDefault();
     const confirmCheck = confirm('수정하시겠습니까?');
     if (confirmCheck) {
       const data = {

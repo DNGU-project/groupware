@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<meta name="_csrf" th:content="${_csrf.token}">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<th:block th:replace="~{/fragments/head :: head}"></th:block>
+<link rel="stylesheet" th:href="@{/css/board/write.css}">
+</head>
+<body>
+
+<th:block th:replace="~{/fragments/header :: header}"></th:block>
+<section class="board-container">
+  <div class="dashboard">
+    <nav>
+      <ul>
+        <li class="dashboard-list">
+          <a href="/board/notice">
+            공지사항
+          </a>
+        </li>
+        <li class="dashboard-list">
+          <a href="/board/freeBoard">
+            자유게시판
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!--  글 상세보기  -->
+  <article>
+    <div class="write-container">
+      <h2>글 쓰기</h2>
+      <form id="write-form">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <input type="hidden" id="empId" name="empId" th:value="${member.empId}">
+        <div class="write-wrap">
+          <div class="group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" class="input" placeholder="제목을 입력해주세요.">
+          </div>
+          <div class="group">
+            <label for="name">작성자</label>
+            <input type="text" id="name" name="name" class="input" th:value="${member.name}" readonly>
+          </div>
+          <div class="group">
+            <span>게시판 종류</span>
+            <label for="free-board">자유게시판 <input type="radio" id="free-board" name="type" value="F" checked></label>
+            <label for="notice">공지사항 <input type="radio" id="notice" name="type" value="N"></label>
+          </div>
+          <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+          <div class="group">
+            <button id="register-btn" class="register-btn">작성완료</button>
+            <a href="/board/freeBoard" class="history-btn">목록보기</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </article>
+  <!--  //글 상세보기  -->
+</section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  const registerBtn = document.getElementById('register-btn');
+  const header = $("meta[name='_csrf_header']").attr("content");
+  const token = $("meta[name='_csrf']").attr("content");
+
+  registerBtn.addEventListener('click', function (evnet) {
+    event.preventDefault();
+    const typeNodeList = document.getElementsByName('type');
+    let type;
+    typeNodeList.forEach(node => {
+      if (node.checked) type = node.value;
+    });
+
+    const data = {
+      title: document.getElementById('title').value,
+      name: document.getElementById('name').value,
+      type: type,
+      content: document.getElementById('content').value,
+      empId: document.getElementById('empId').value
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/board/writePost',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: JSON.stringify(data),
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader(header, token);
+      },
+      success: function(data) {
+        alert('작성이 완료되었습니다.');
+        window.location.href = '/board/freeBoard';
+      },
+      error: function(error) {
+        alert(`error: ${error}`);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
