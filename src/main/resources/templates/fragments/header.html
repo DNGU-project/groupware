@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
-<th:block th:fragment="header">
+<div th:fragment="header">
   <header>
     <!--  <span class="btn-list"><i class="fa-solid fa-bars"></i></span>-->
     <h1 class="logo">
-      <a href="#">
+      <a href="/">
         <img th:src="@{/img/logo.png}" alt="logo" width="160" height="80">
       </a>
     </h1>
     <nav>
       <ul>
         <li class="menu-list">
-          <a href="#">
+          <a href="/">
             <span class="icon"><i class="fa-solid fa-house"></i></span>
             홈
           </a>
@@ -36,7 +36,7 @@
           </a>
         </li>
         <li class="menu-list">
-          <a href="#">
+          <a href="/board/freeBoard">
             <span class="icon"><i class="fa-brands fa-instagram"></i></span>
             커뮤니티
           </a>
@@ -77,20 +77,29 @@
   <div class="dashboard_header">
     <section>
       <div class="commute-menu">
-        <!--      <button>출근</button>-->
-        <!--      <button>퇴근</button>-->
       </div>
       <div class="my-info-menu">
-        <p>민재홍 / 사원</p>
+        <p>
+          <span th:text="${member.name}"></span>
+          (
+          <span th:text="${member.deptNo.getDeptName()}"></span>
+          /
+          <span th:text="${member.jobNo.getJobName()}"></span>
+          )
+        </p>
         <div class="profile" title="내 정보">
-          <i class="fa-regular fa-user"></i>
+          <a href="/account/checkPwd">
+            <i class="fa-regular fa-user"></i>
+          </a>
         </div>
         <div class="logout" title="로그아웃">
-          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <a href="/account/logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
         </div>
       </div>
     </section>
   </div>
-</th:block>
+</div>
 
 </html>

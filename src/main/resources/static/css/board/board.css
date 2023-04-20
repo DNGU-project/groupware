@@ -1,0 +1,134 @@
+.board-container {
+  display: flex;
+  min-width: 1540px;
+  padding-left: 200px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  flex-grow: 0;
+  border-right: 1px solid rgb(156, 163, 175);
+  width: 200px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard nav ul {
+  width: 180px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.dashboard nav ul li {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+article {
+  flex-grow: 1;
+  width: 1140px;
+  box-sizing: border-box;
+}
+
+article .board-content {
+  width: 1000px;
+  margin: 0 auto;
+}
+article .board-content .board-wrap {
+  position: relative;
+  padding: 20px 0;
+}
+
+article .board-content .board-wrap .board-list-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.board-list-wrap table tr {
+  height: 40px;
+}
+
+.board-list-wrap table thead th {
+  font-size: 1rem;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.board-list-wrap table tbody tr:hover {
+  background: rgb(211, 217, 229);
+  cursor: pointer;
+}
+
+.board-list-wrap table tbody td {
+  font-size: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgb(156, 163, 175);
+}
+
+.board-list-wrap table tbody td:nth-child(2) {
+  text-align: left;
+  padding: 0 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.board-wrap .tool-bar-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.board-wrap .tool-bar-wrap .search-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-wrap .tool-bar-wrap .search-wrap .search-input {
+  width: 150px;
+  height: 30px;
+  border: 1px solid rgb(139, 144, 153);
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.board-wrap .tool-bar-wrap .search-wrap .search-btn {
+  width: 50px;
+  height: 30px;
+  background: rgb(184, 191, 204);
+  font-size: 1rem;
+  border-radius: 4px;
+}
+
+.board-wrap .tool-bar-wrap .search-wrap .search-btn:hover {
+  cursor: pointer;
+}
+
+.board-wrap .tool-bar-wrap .tool-bar a {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 1.25rem;
+  margin: 0 10px;
+}
+
+.board-wrap .tool-bar-wrap .tool-bar a:hover {
+  cursor: pointer;
+}
+
+.board-wrap .board-btn {
+  width: 100px;
+  height: 50px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: skyblue;
+}

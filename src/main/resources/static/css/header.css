@@ -7,7 +7,7 @@ header {
   background-color: skyblue;
   width: 200px;
   height: 100vh;
-  z-index: 10;
+  z-index: 999;
 }
 
 header .btn-list {

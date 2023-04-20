@@ -1,0 +1,44 @@
+# Database 연동
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    PC에 만들어놓은 Database 이름 작성
+    url: jdbc:mysql://localhost:3306/groupware?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    생성한 계정 정보 작성
+    username: groupware
+    password: ware
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
+  #  main:
+#    allow-circular-references: true
+
+  #  Jpa 설정
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

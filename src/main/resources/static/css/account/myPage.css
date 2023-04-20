@@ -1,0 +1,142 @@
+.card-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-left: 200px;
+}
+
+.card {
+  width: 42%;
+  box-shadow: 0 5px 50px 10px rgba(0, 0, 0, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+
+.card .card-header {
+  background-color: white;
+  border-bottom: 1px solid rgb(243, 244, 246);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  padding: 1rem 0;
+}
+
+.card .card-header .card-header-title {
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card .card-header .card-header-title span {
+  margin-right: 5px;
+}
+
+.card .card-content {
+  padding: 1.5rem 1rem;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+}
+
+.card-content .field.spaced:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.card-content .field:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.card-content .label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  padding-left: 3px;
+}
+
+.control.icons-left {
+  position: relative;
+}
+
+.control.icons-left .input {
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid rgb(156, 163, 175);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.control.icons-left .icon {
+  position: absolute;
+  top: 11px;
+  left: 13px;
+  z-index: 10;
+}
+
+.control.icons-left .postcode-btn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 100px;
+  height: 30px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card-content .field.spaced a {
+  font-size: 0.9rem;
+}
+
+.card-content .field.spaced a:first-child {
+  margin-right: 10px;
+}
+
+.card-content .field.spaced a:hover {
+  font-weight: bold;
+}
+
+.card-content .field.spaced a:first-child::after {
+  content: '';
+  border-right: 1px solid rgb(156, 163, 175);
+  margin-left: 15px;
+}
+
+.field.grouped {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 16px 24px
+}
+
+.grouped .button.blue {
+  background-color: rgb(114, 165, 250);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: transparent;
+  border-radius: 8px;
+}
+
+.grouped .button.blue:hover {
+  background-color: rgb(78, 140, 243);
+  cursor: pointer;
+}
+
+.field.select {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.field.select label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field.select select {
+  width: 100px;
+  height: 30px;
+  border: 1px solid rgb(156, 163, 175);
+  border-radius: 8px;
+  padding: 5px;
+}
